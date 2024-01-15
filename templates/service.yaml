@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: db
+  name: 'db'
+  namespace: {{ .Values.namespace }}
+spec:
+  type: {{ .Values.Database.service_spec.service_type }}
+  ports:
+  - port: {{ .Values.Database.service_spec.db_port }}
+    targetPort: {{ .Values.Database.service_spec.db_targerport }}
+  selector:
+    app: db
+  
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: redis
+  name: redis
+  namespace: {{ .Values.namespace }}
+spec:
+  type: {{ .Values.Redis.service_spec.service_type }}
+  ports:
+  - port: {{ .Values.Redis.service_spec.redis_port }}
+    targetPort: {{ .Values.Redis.service_spec.redis_targetport }}
+  selector:
+    app: redis
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: result
+  name: result
+  namespace: {{ .Values.namespace }}
+spec:
+  type: {{ .Values.Result.service_spec.service_type }}
+  ports:
+  - port: {{ .Values.Result.service_spec.result_port }}
+    targetPort: {{ .Values.Result.service_spec.result_targetport }}
+  selector:
+    app: result
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: vote
+  name: vote
+  namespace: {{ .Values.namespace }}
+spec:
+  type: {{ .Values.Vote.service_spec.service_type }}
+  ports:
+  - port: {{ .Values.Vote.service_spec.vote_port }}
+    targetPort: {{ .Values.Vote.service_spec.vote_targetport }}
+  selector:
+    app: vote

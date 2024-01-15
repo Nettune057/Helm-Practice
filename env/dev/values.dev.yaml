@@ -1,0 +1,36 @@
+namespace: vote
+
+Database:
+  deployment_spec:
+    replicas: 1
+    containers:
+      name: postgres
+      image: postgres:9.4
+      containerPort: 5432
+      mount: /var/lib/postgresql/data
+  service_spec:
+    service_type: ClusterIP
+    db_port: 5432
+    db_targetport: 5432
+  configmap:
+    data:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+
+Redis:
+  service_spec:
+    service_type: ClusterIP
+    redis_port: 6379
+    redis_targetport: 6379
+
+Result:
+  service_spec:
+    service_type: NodePort
+    result_port: 5001
+    result_targetport: 80
+
+Vote:
+  service_spec:
+    service_type: NodePort
+    vote_port: 5000
+    vote_targetport: 80
