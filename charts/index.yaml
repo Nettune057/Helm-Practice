@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  vote-app:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-01-15T09:53:14.599908154Z"
+    description: A Helm chart for Kubernetes
+    digest: ace8d9459227393577c683e29b49f3f26050cd63883bead7eae4f28f6867e0fc
+    name: vote-app
+    type: application
+    urls:
+    - vote-app-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-01-15T09:53:14.59960569Z"
